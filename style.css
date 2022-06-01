@@ -1,3 +1,111 @@
+/* ********* CSS RESET ********** */
+
 i {
   font-style: normal;
+}
+
+body, body * {
+  margin: 0;
+  padding: 0;
+}
+
+/* ***** end CSS RESET ********** */
+
+body {
+  font-family: sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 3.5em;
+}
+
+.picker-section h1 {
+  margin-top: 10vh;
+}
+
+.picker-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  height: 100%;
+}
+
+.palette-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.color-box {
+  width: 250px;
+  height: 250px;
+}
+
+.color1 {
+  background-color: #ef476f;
+}
+
+.color2 {
+  background-color: #ffd166;
+}
+
+.color3 {
+  background-color: #06d6a0;
+}
+
+.color4 {
+  background-color: #118ab2;
+}
+
+.color5 {
+  background-color: #073b4c;
+}
+
+.color-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+}
+
+.color-container span {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.saved-section {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  height: 100%;
+  border-left: 5px solid black;
+}
+
+.saved-section h2 {
+  margin-top: 10vh;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin-bottom: 15vh;
+}
+
+.picker-button {
+  font-size: 2em;
+  padding: 10px 20px;
 }
