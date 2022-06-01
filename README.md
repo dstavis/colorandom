@@ -1,11 +1,14 @@
-#Group Members
-######in alphabetical order by first name
+# Group Members
+
+###### in alphabetical order by first name
 Anna Spitz
+
 David Stavis
+
 Thomas Fettig
 
-#Project Management
+# Project Management
 https://davidstavis.monday.com/boards/2745197384
 
-#Instructions
+# Instructions
 https://frontend.turing.edu/projects/module-1/colorandom-v2.html
