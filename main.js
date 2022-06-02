@@ -39,15 +39,15 @@ class Palette {
     return output;
   }
 
-  lockColor(colorId) {
+  toggleColorLocked(colorId) {
     for(var i = 0; i < this.colors.length; i++) {
       if(this.colors[i].id === colorId) {
-        this.colors[i].locked = true;
+        this.colors[i].locked = !this.colors[i].locked;
       }
     }
   }
 
-  resetColors(){
+  replaceUnlockedColors(){
     for(var i = 0; i < this.colors.length; i++) {
       if(!this.colors[i].locked) {
         this.colors.splice(i, 1, new Color());
