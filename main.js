@@ -60,7 +60,6 @@ class Palette {
 var newPaletteButton = document.querySelector("#new-palette-button")
 var savePaletteButton = document.querySelector("#save-palette-button")
 var paletteContainer = document.querySelector(".palette-container")
-var colorTemplate = document.querySelector("#color-template")
 
 window.addEventListener("load", loadNewPalette)
 // newPaletteButton.addEventListener("click", showNewPalette)
@@ -69,11 +68,14 @@ window.addEventListener("load", loadNewPalette)
 
 function loadNewPalette() {
   var originalPalette = new Palette();
-  var templateContent = colorTemplate.content.children[0];
-  for(var i = 0; i < originalPalette.colors.length; i++) {
-    templateContent.setAttribute("data-id", originalPalette.colors[i].id)
-    templateContent.children[0].style.background = originalPalette.colors[i].hexcode;
-    templateContent.children[1].children[0].innerText = originalPalette.colors[i].hexcode
-    paletteContainer.innerHTML += paletteContainer.append("templateContent")
+  for (i = 0; i < originalPalette.colors.length; i++) {
+    paletteContainer.innerHTML +=
+    `<article class="color-container" data-id="${originalPalette.colors[i].id}">
+      <div class="color-box color1" style="background:${originalPalette.colors[i].hexcode};"></div>
+      <span>
+        <p class="hexcode">${originalPalette.colors[i].hexcode}</p>
+        <i class="lock">🔓</i>
+      </span>
+    </article>`
   }
 }
