@@ -2,8 +2,11 @@ class Color {
   constructor() {
     this.hexcode = this.#randomHexCode();
     this.locked = false;
-    this.id = Date.now().toString(); //id no work, fix me
+    this.id = Color.colorsMadeSoFar + 1;
+    Color.colorsMadeSoFar++
   }
+
+  static colorsMadeSoFar = 0;
 
   #randomHexCode() {
     var validCharacters = "ABCDEF0123456789".split("");
@@ -22,8 +25,11 @@ class Color {
 class Palette {
   constructor() {
     this.colors = this.#addDefaultColors();
-    this.id = Date.now().toString(); //id no work, fix me
+    this.id = Palette.palettesMadeSoFar + 1;
+    Palette.palettesMadeSoFar++;
   }
+
+  static palettesMadeSoFar = 0;
 
   #addDefaultColors() {
     var output = [];
