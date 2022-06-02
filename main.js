@@ -3,7 +3,7 @@ class Color {
     this.hexcode = this.#randomHexCode();
     this.locked = false;
     this.id = Color.colorsMadeSoFar + 1;
-    Color.colorsMadeSoFar++
+    Color.colorsMadeSoFar++;
   }
 
   static colorsMadeSoFar = 0;
@@ -57,17 +57,18 @@ class Palette {
 
 }
 
-var newPaletteButton = document.querySelector("#new-palette-button")
-var savePaletteButton = document.querySelector("#save-palette-button")
-var paletteContainer = document.querySelector(".palette-container")
+var newPaletteButton = document.querySelector("#new-palette-button");
+var savePaletteButton = document.querySelector("#save-palette-button");
+var paletteContainer = document.querySelector(".palette-container");
 
-window.addEventListener("load", loadNewPalette)
-// newPaletteButton.addEventListener("click", showNewPalette)
-// savePaletteButton.addEventListener("click", saveNewPalette)
+window.addEventListener("load", loadNewPalette);
+newPaletteButton.addEventListener("click", newPalette);
+// savePaletteButton.addEventListener("click", saveNewPalette);
 
+var originalPalette = new Palette();
 
 function loadNewPalette() {
-  var originalPalette = new Palette();
+  paletteContainer.innerHTML = "";
   for (i = 0; i < originalPalette.colors.length; i++) {
     paletteContainer.innerHTML +=
     `<article class="color-container" data-id="${originalPalette.colors[i].id}">
@@ -76,6 +77,11 @@ function loadNewPalette() {
         <p class="hexcode">${originalPalette.colors[i].hexcode}</p>
         <i class="lock">🔓</i>
       </span>
-    </article>`
+    </article>`;
   }
+}
+
+function newPalette() {
+  originalPalette.replaceUnlockedColors();
+  loadNewPalette();
 }
