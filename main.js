@@ -61,27 +61,26 @@ var newPaletteButton = document.querySelector("#new-palette-button");
 var savePaletteButton = document.querySelector("#save-palette-button");
 var paletteContainer = document.querySelector(".palette-container");
 
-window.addEventListener("load", loadNewPalette);
-newPaletteButton.addEventListener("click", newPalette);
-// savePaletteButton.addEventListener("click", saveNewPalette);
+window.addEventListener("load", displayPalette);
+newPaletteButton.addEventListener("click", displayPalette);
 
-var originalPalette = new Palette();
+var currentPalette = new Palette();
 
-function loadNewPalette() {
+function displayPalette(event) {
   paletteContainer.innerHTML = "";
-  for (i = 0; i < originalPalette.colors.length; i++) {
+
+  if(event.type === "click") {
+    currentPalette.replaceUnlockedColors();
+  }
+
+  for (i = 0; i < currentPalette.colors.length; i++) {
     paletteContainer.innerHTML +=
-    `<article class="color-container" data-id="${originalPalette.colors[i].id}">
-      <div class="color-box color1" style="background:${originalPalette.colors[i].hexcode};"></div>
+    `<article class="color-container" data-id="${currentPalette.colors[i].id}">
+      <div class="color-box color1" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
-        <p class="hexcode">${originalPalette.colors[i].hexcode}</p>
+        <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
         <i class="lock">🔓</i>
       </span>
     </article>`;
   }
-}
-
-function newPalette() {
-  originalPalette.replaceUnlockedColors();
-  loadNewPalette();
 }
