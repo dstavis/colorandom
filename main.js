@@ -69,31 +69,25 @@ var currentPalette = new Palette();
 
 function displayPalette(event) {
   paletteContainer.innerHTML = "";
-
+  var iconType;
   if(event.type === "click") {
     currentPalette.replaceUnlockedColors();
   }
 
   for(i = 0; i < currentPalette.colors.length; i++) {
     if(currentPalette.colors[i].locked === false) {
-    paletteContainer.innerHTML +=
-    `<article class="color-container" data-id="${currentPalette.colors[i].id}">
-      <div class="color-box color1" style="background:${currentPalette.colors[i].hexcode};"></div>
-      <span>
-        <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
-        <i class="fa-solid fa-lock-open" data-id="${currentPalette.colors[i].id}"></i>
-      </span>
-    </article>`;
-  } if(currentPalette.colors[i].locked === true) {
-    paletteContainer.innerHTML +=
-    `<article class="color-container" data-id="${currentPalette.colors[i].id}">
-      <div class="color-box color1" style="background:${currentPalette.colors[i].hexcode};"></div>
-      <span>
-        <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
-        <i class="fa-solid fa-lock" data-id="${currentPalette.colors[i].id}"></i>
-      </span>
-    </article>`;
+      iconType = "fa-lock-open";
+    } else {
+      iconType = "fa-lock";
     }
+    paletteContainer.innerHTML +=
+    `<article class="color-container" data-id="${currentPalette.colors[i].id}">
+      <div class="color-box" style="background:${currentPalette.colors[i].hexcode};"></div>
+      <span>
+        <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
+        <i class="fa-solid ${iconType}" data-id="${currentPalette.colors[i].id}"></i>
+      </span>
+    </article>`;
   }
 }
 
