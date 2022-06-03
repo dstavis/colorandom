@@ -75,6 +75,7 @@ function displayPalette(event) {
   }
 
   for(i = 0; i < currentPalette.colors.length; i++) {
+    if(currentPalette.colors[i].locked === false) {
     paletteContainer.innerHTML +=
     `<article class="color-container" data-id="${currentPalette.colors[i].id}">
       <div class="color-box color1" style="background:${currentPalette.colors[i].hexcode};"></div>
@@ -83,23 +84,35 @@ function displayPalette(event) {
         <i class="fa-solid fa-lock-open" data-id="${currentPalette.colors[i].id}"></i>
       </span>
     </article>`;
+  } if(currentPalette.colors[i].locked === true) {
+    paletteContainer.innerHTML +=
+    `<article class="color-container" data-id="${currentPalette.colors[i].id}">
+      <div class="color-box color1" style="background:${currentPalette.colors[i].hexcode};"></div>
+      <span>
+        <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
+        <i class="fa-solid fa-lock" data-id="${currentPalette.colors[i].id}"></i>
+      </span>
+    </article>`;
+    }
   }
 }
 
 function lockUnlockColor(event) {
-    if(event.target.classList.contains("fa-lock-open" || "fa-lock")) {
-      currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
-      switchLockIcon(event)
-    }
+  if(event.target.classList.contains("fa-lock-open")) {
+    currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
+    lockIcon(event);
+  } else {
+    currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
+    unlockIcon(event);
+  }
 }
 
-function switchLockIcon(event) {
-  if(event.target.classList.contains("fa-lock-open")) {
-    event.target.classList.remove("fa-lock-open")
-    event.target.classList.add("fa-lock")
-  }
-  if(event.target.classList.contains("fa-lock")) {
-    event.target.classList.remove("fa-lock")
-    event.target.classList.add("fa-lock-open")
-  }
+function lockIcon(event) {
+  event.target.classList.remove("fa-lock-open");
+  event.target.classList.add("fa-lock");
+}
+
+function unlockIcon(event) {
+  event.target.classList.remove("fa-lock");
+  event.target.classList.add("fa-lock-open");
 }
