@@ -62,20 +62,23 @@ var savePaletteButton = document.querySelector("#save-palette-button");
 var paletteContainer = document.querySelector(".palette-container");
 var savedPaletteContainer = document.querySelector(".saved-palette-container")
 
-window.addEventListener("load", displayPalette);
-newPaletteButton.addEventListener("click", displayPalette);
+window.addEventListener("load", handler);
+newPaletteButton.addEventListener("click", handler);
 savePaletteButton.addEventListener("click", savePalette);
 
 var currentPalette = new Palette();
 var savedPalettes = []
 
-function displayPalette(event) {
-  paletteContainer.innerHTML = "";
-
+function handler(event){
   if(event.type === "click") {
     currentPalette.replaceUnlockedColors();
   }
+  displayPalette();
+}
 
+
+function displayPalette() {
+  paletteContainer.innerHTML = "";
   for (i = 0; i < currentPalette.colors.length; i++) {
     paletteContainer.innerHTML +=
     `<article class="color-container" data-id="${currentPalette.colors[i].id}">
@@ -92,6 +95,7 @@ function savePalette() {
   savedPalettes.push(currentPalette);
   displaySavedPalettes();
   currentPalette = new Palette();
+  displayPalette();
 }
 
 function displaySavedPalettes() {
