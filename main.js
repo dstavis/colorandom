@@ -18,7 +18,7 @@ class Color {
       output.push(validCharacters[randomIndex]);
     }
 
-    return output.join('');
+    return output.join("");
   }
 }
 
@@ -60,9 +60,11 @@ class Palette {
 var newPaletteButton = document.querySelector("#new-palette-button");
 var savePaletteButton = document.querySelector("#save-palette-button");
 var paletteContainer = document.querySelector(".palette-container");
+var savedPaletteContainer = document.querySelector(".saved-palette-container")
 
 window.addEventListener("load", displayPalette);
 newPaletteButton.addEventListener("click", displayPalette);
+savePaletteButton.addEventListener("click", savePalette);
 
 var currentPalette = new Palette();
 
@@ -76,10 +78,23 @@ function displayPalette(event) {
   for (i = 0; i < currentPalette.colors.length; i++) {
     paletteContainer.innerHTML +=
     `<article class="color-container" data-id="${currentPalette.colors[i].id}">
-      <div class="color-box color1" style="background:${currentPalette.colors[i].hexcode};"></div>
+      <div class="color-box" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
         <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
         <i class="lock">🔓</i>
+      </span>
+    </article>`;
+  }
+}
+
+function savePalette() {
+  for (i = 0; i < currentPalette.colors.length; i++) {
+    savedPaletteContainer.innerHTML +=
+    `<article class="saved-color-container" data-id="${currentPalette.colors[i].id}">
+      <div class="saved-color-box" style="background:${currentPalette.colors[i].hexcode};"></div>
+      <span>
+        <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
+        <i class="fa-solid fa-trash-can" data-id="${currentPalette.colors[i].id}"></i>
       </span>
     </article>`;
   }
