@@ -53,26 +53,6 @@ h1 {
   height: 250px;
 }
 
-.color1 {
-  background-color: #ef476f;
-}
-
-.color2 {
-  background-color: #ffd166;
-}
-
-.color3 {
-  background-color: #06d6a0;
-}
-
-.color4 {
-  background-color: #118ab2;
-}
-
-.color5 {
-  background-color: #073b4c;
-}
-
 .color-container {
   display: flex;
   flex-direction: column;

@@ -3,7 +3,7 @@ class Color {
     this.hexcode = this.#randomHexCode();
     this.locked = false;
     this.id = Color.colorsMadeSoFar + 1;
-    Color.colorsMadeSoFar++
+    Color.colorsMadeSoFar++;
   }
 
   static colorsMadeSoFar = 0;
@@ -55,4 +55,32 @@ class Palette {
     }
   }
 
+}
+
+var newPaletteButton = document.querySelector("#new-palette-button");
+var savePaletteButton = document.querySelector("#save-palette-button");
+var paletteContainer = document.querySelector(".palette-container");
+
+window.addEventListener("load", displayPalette);
+newPaletteButton.addEventListener("click", displayPalette);
+
+var currentPalette = new Palette();
+
+function displayPalette(event) {
+  paletteContainer.innerHTML = "";
+
+  if(event.type === "click") {
+    currentPalette.replaceUnlockedColors();
+  }
+
+  for (i = 0; i < currentPalette.colors.length; i++) {
+    paletteContainer.innerHTML +=
+    `<article class="color-container" data-id="${currentPalette.colors[i].id}">
+      <div class="color-box color1" style="background:${currentPalette.colors[i].hexcode};"></div>
+      <span>
+        <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
+        <i class="lock">🔓</i>
+      </span>
+    </article>`;
+  }
 }
