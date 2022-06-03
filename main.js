@@ -90,14 +90,21 @@ function displayPalette(event) {
 
 function savePalette() {
   savedPalettes.push(currentPalette);
+  displaySavedPalettes();
   currentPalette = new Palette();
-    savedPaletteContainer.innerHTML +=
-    `<article class="saved-palette" data-id="${currentPalette.colors[0].id}">
-       <div class="saved-color-box" style="background:${currentPalette.colors[0].hexcode};"></div>
-       <div class="saved-color-box" style="background:${currentPalette.colors[1].hexcode};"></div>
-       <div class="saved-color-box" style="background:${currentPalette.colors[2].hexcode};"></div>
-       <div class="saved-color-box" style="background:${currentPalette.colors[3].hexcode};"></div>
-       <div class="saved-color-box" style="background:${currentPalette.colors[4].hexcode};"></div>
-       <i class="fa-solid fa-trash-can" data-id="${currentPalette.colors[0].id}"></i>
-     </article>`;
+}
+
+function displaySavedPalettes() {
+  savedPaletteContainer.innerHTML = "";
+  for(var i = 0; i < savedPalettes.length; i++) {
+  savedPaletteContainer.innerHTML +=
+    `<article class="saved-palette" data-id="${savedPalettes[i].id}">
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[0].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[1].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[3].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[4].hexcode};"></div>
+        <i class="fa-solid fa-trash-can" data-id="${savedPalettes[i].id}"></i>
+      </article>`;
+  }
 }
