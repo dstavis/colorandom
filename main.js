@@ -101,7 +101,7 @@ function lockUnlockColor(event) {
   if(event.target.classList.contains("fa-lock-open")) {
     currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
     lockIcon(event);
-  } else {
+  } else if (event.target.classList.contains("fa-lock")) {
     currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
     unlockIcon(event);
   }
