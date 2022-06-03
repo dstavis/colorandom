@@ -60,8 +60,7 @@ h1 {
   height: 300px;
 }
 
-.color-container span,
-.saved-color-container span {
+.color-container span {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -80,14 +79,10 @@ h1 {
   margin-top: 10vh;
 }
 
-.saved-palette-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .saved-palette {
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin-top: 3vh;
 }
 
