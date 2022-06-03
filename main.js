@@ -63,6 +63,7 @@ var paletteContainer = document.querySelector(".palette-container");
 
 window.addEventListener("load", displayPalette);
 newPaletteButton.addEventListener("click", displayPalette);
+paletteContainer.addEventListener("click", lockUnlockColor);
 
 var currentPalette = new Palette();
 
@@ -73,14 +74,32 @@ function displayPalette(event) {
     currentPalette.replaceUnlockedColors();
   }
 
-  for (i = 0; i < currentPalette.colors.length; i++) {
+  for(i = 0; i < currentPalette.colors.length; i++) {
     paletteContainer.innerHTML +=
     `<article class="color-container" data-id="${currentPalette.colors[i].id}">
       <div class="color-box color1" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
         <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
-        <i class="lock">🔓</i>
+        <i class="fa-solid fa-lock-open" data-id="${currentPalette.colors[i].id}"></i>
       </span>
     </article>`;
+  }
+}
+
+function lockUnlockColor(event) {
+    if(event.target.classList.contains("fa-lock-open" || "fa-lock")) {
+      currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
+      switchLockIcon(event)
+    }
+}
+
+function switchLockIcon(event) {
+  if(event.target.classList.contains("fa-lock-open")) {
+    event.target.classList.remove("fa-lock-open")
+    event.target.classList.add("fa-lock")
+  }
+  if(event.target.classList.contains("fa-lock")) {
+    event.target.classList.remove("fa-lock")
+    event.target.classList.add("fa-lock-open")
   }
 }
