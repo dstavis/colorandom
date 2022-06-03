@@ -67,6 +67,7 @@ newPaletteButton.addEventListener("click", displayPalette);
 savePaletteButton.addEventListener("click", savePalette);
 
 var currentPalette = new Palette();
+var savedPalettes = []
 
 function displayPalette(event) {
   paletteContainer.innerHTML = "";
@@ -88,6 +89,8 @@ function displayPalette(event) {
 }
 
 function savePalette() {
+  savedPalettes.push(currentPalette);
+  currentPalette = new Palette();
     savedPaletteContainer.innerHTML +=
     `<article class="saved-palette" data-id="${currentPalette.colors[0].id}">
        <div class="saved-color-box" style="background:${currentPalette.colors[0].hexcode};"></div>
