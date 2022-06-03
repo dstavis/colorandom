@@ -18,7 +18,7 @@ class Color {
       output.push(validCharacters[randomIndex]);
     }
 
-    return output.join('');
+    return output.join("");
   }
 }
 
@@ -60,21 +60,27 @@ class Palette {
 var newPaletteButton = document.querySelector("#new-palette-button");
 var savePaletteButton = document.querySelector("#save-palette-button");
 var paletteContainer = document.querySelector(".palette-container");
+var savedPaletteContainer = document.querySelector(".saved-palette-container")
 
-window.addEventListener("load", displayPalette);
-newPaletteButton.addEventListener("click", displayPalette);
+window.addEventListener("load", handler);
+newPaletteButton.addEventListener("click", handler);
+savePaletteButton.addEventListener("click", savePalette);
 paletteContainer.addEventListener("click", lockUnlockColor);
 
 var currentPalette = new Palette();
+var savedPalettes = []
 
-function displayPalette(event) {
-  paletteContainer.innerHTML = "";
-  var iconType;
+function handler(event) {
   if(event.type === "click") {
     currentPalette.replaceUnlockedColors();
   }
+  displayPalette();
+}
 
-  for(i = 0; i < currentPalette.colors.length; i++) {
+function displayPalette() {
+  paletteContainer.innerHTML = "";
+  var iconType;
+  for (i = 0; i < currentPalette.colors.length; i++) {
     if(currentPalette.colors[i].locked === false) {
       iconType = "fa-lock-open";
     } else {
@@ -109,4 +115,26 @@ function lockIcon(event) {
 function unlockIcon(event) {
   event.target.classList.remove("fa-lock");
   event.target.classList.add("fa-lock-open");
+}
+
+function savePalette() {
+  savedPalettes.push(currentPalette);
+  displaySavedPalettes();
+  currentPalette = new Palette();
+  displayPalette();
+}
+
+function displaySavedPalettes() {
+  savedPaletteContainer.innerHTML = "";
+  for(var i = 0; i < savedPalettes.length; i++) {
+  savedPaletteContainer.innerHTML +=
+    `<article class="saved-palette" data-id="${savedPalettes[i].id}">
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[0].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[1].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[3].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[4].hexcode};"></div>
+        <i class="fa-solid fa-trash-can" data-id="${savedPalettes[i].id}"></i>
+      </article>`;
+  }
 }
