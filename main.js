@@ -88,14 +88,42 @@ function displayPalette(event) {
 }
 
 function savePalette() {
-  for (i = 0; i < currentPalette.colors.length; i++) {
     savedPaletteContainer.innerHTML +=
-    `<article class="saved-color-container" data-id="${currentPalette.colors[i].id}">
-      <div class="saved-color-box" style="background:${currentPalette.colors[i].hexcode};"></div>
-      <span>
-        <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
-        <i class="fa-solid fa-trash-can" data-id="${currentPalette.colors[i].id}"></i>
-      </span>
-    </article>`;
-  }
+    `<secton class="saved-palette">
+      <article class="saved-color-container" data-id="${currentPalette.colors[0].id}">
+        <div class="saved-color-box" style="background:${currentPalette.colors[0].hexcode};"></div>
+        <span>
+          <p class="hexcode">${currentPalette.colors[0].hexcode}</p>
+          <i class="fa-solid fa-trash-can" data-id="${currentPalette.colors[0].id}"></i>
+        </span>
+      </article>
+      <article class="saved-color-container" data-id="${currentPalette.colors[1].id}">
+        <div class="saved-color-box" style="background:${currentPalette.colors[1].hexcode};"></div>
+        <span>
+          <p class="hexcode">${currentPalette.colors[1].hexcode}</p>
+          <i class="fa-solid fa-trash-can" data-id="${currentPalette.colors[1].id}"></i>
+        </span>
+      </article>
+      <article class="saved-color-container" data-id="${currentPalette.colors[2].id}">
+        <div class="saved-color-box" style="background:${currentPalette.colors[2].hexcode};"></div>
+        <span>
+          <p class="hexcode">${currentPalette.colors[2].hexcode}</p>
+          <i class="fa-solid fa-trash-can" data-id="${currentPalette.colors[2].id}"></i>
+        </span>
+      </article>
+      <article class="saved-color-container" data-id="${currentPalette.colors[3].id}">
+        <div class="saved-color-box" style="background:${currentPalette.colors[3].hexcode};"></div>
+        <span>
+          <p class="hexcode">${currentPalette.colors[3].hexcode}</p>
+          <i class="fa-solid fa-trash-can" data-id="${currentPalette.colors[3].id}"></i>
+        </span>
+      </article>
+      <article class="saved-color-container" data-id="${currentPalette.colors[4].id}">
+        <div class="saved-color-box" style="background:${currentPalette.colors[4].hexcode};"></div>
+        <span>
+          <p class="hexcode">${currentPalette.colors[4].hexcode}</p>
+          <i class="fa-solid fa-trash-can" data-id="${currentPalette.colors[4].id}"></i>
+        </span>
+      </article>
+    </section>`;
 }

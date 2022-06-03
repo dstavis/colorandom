@@ -1,8 +1,8 @@
 /* ********* CSS RESET ********** */
 
-/* i {
+i {
   font-style: normal;
-} */
+}
 
 body, body * {
   margin: 0;
@@ -60,7 +60,8 @@ h1 {
   height: 300px;
 }
 
-.color-container span {
+.color-container span,
+.saved-color-container span {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -84,9 +85,17 @@ h1 {
   flex-direction: column;
 }
 
+.saved-palette {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3vh;
+}
+
 .saved-color-box {
   width: 100px;
   height: 100px;
+  margin-right: .5vw;
+  margin-bottom: .8vh;
 }
 
 .button-container {
