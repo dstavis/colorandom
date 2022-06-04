@@ -18,8 +18,9 @@ class Color {
       output.push(validCharacters[randomIndex]);
     }
 
-    return output.join('');
+    return output.join("");
   }
+
 }
 
 class Palette {
@@ -60,27 +61,93 @@ class Palette {
 var newPaletteButton = document.querySelector("#new-palette-button");
 var savePaletteButton = document.querySelector("#save-palette-button");
 var paletteContainer = document.querySelector(".palette-container");
+var savedPaletteContainer = document.querySelector(".saved-palette-container")
 
-window.addEventListener("load", displayPalette);
-newPaletteButton.addEventListener("click", displayPalette);
+window.addEventListener("load", loadPalette);
+newPaletteButton.addEventListener("click", loadPalette);
+savePaletteButton.addEventListener("click", savePalette);
+paletteContainer.addEventListener("click", lockUnlockColor);
+savedPaletteContainer.addEventListener("click", deleteSavedPalette);
 
 var currentPalette = new Palette();
+var savedPalettes = []
 
-function displayPalette(event) {
-  paletteContainer.innerHTML = "";
-
+function loadPalette(event) {
   if(event.type === "click") {
     currentPalette.replaceUnlockedColors();
   }
+  displayPalette();
+}
 
+function displayPalette() {
+  paletteContainer.innerHTML = "";
+  var iconType;
   for (i = 0; i < currentPalette.colors.length; i++) {
+    if(currentPalette.colors[i].locked === false) {
+      iconType = "fa-lock-open";
+    } else {
+      iconType = "fa-lock";
+    }
     paletteContainer.innerHTML +=
     `<article class="color-container" data-id="${currentPalette.colors[i].id}">
-      <div class="color-box color1" style="background:${currentPalette.colors[i].hexcode};"></div>
+      <div class="color-box" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
         <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
-        <i class="lock">🔓</i>
+        <i class="fa-solid ${iconType}" data-id="${currentPalette.colors[i].id}"></i>
       </span>
     </article>`;
+  }
+}
+
+function lockUnlockColor(event) {
+  if(event.target.classList.contains("fa-lock-open")) {
+    currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
+    lockIcon(event);
+  } else if (event.target.classList.contains("fa-lock")) {
+    currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
+    unlockIcon(event);
+  }
+}
+
+function lockIcon(event) {
+  event.target.classList.remove("fa-lock-open");
+  event.target.classList.add("fa-lock");
+}
+
+function unlockIcon(event) {
+  event.target.classList.remove("fa-lock");
+  event.target.classList.add("fa-lock-open");
+}
+
+function savePalette() {
+  savedPalettes.push(currentPalette);
+  displaySavedPalettes();
+  currentPalette = new Palette();
+  displayPalette();
+}
+
+function displaySavedPalettes() {
+  savedPaletteContainer.innerHTML = "";
+  for(var i = 0; i < savedPalettes.length; i++) {
+  savedPaletteContainer.innerHTML +=
+    `<article class="saved-palette" data-id="${savedPalettes[i].id}">
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[0].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[1].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[3].hexcode};"></div>
+        <div class="saved-color-box" style="background:${savedPalettes[i].colors[4].hexcode};"></div>
+        <i class="fa-solid fa-trash-can" data-id="${savedPalettes[i].id}"></i>
+      </article>`;
+  }
+}
+
+function deleteSavedPalette(event) {
+  if(event.target.classList.contains("fa-trash-can")) {
+    for(var i = 0; i < savedPalettes.length; i++) {
+      if(savedPalettes[i].id === parseInt(event.target.getAttribute("data-id"))) {
+        savedPalettes.splice(i, 1);
+      }
+    }
+    displaySavedPalettes();
   }
 }
