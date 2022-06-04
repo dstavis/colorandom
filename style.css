@@ -71,7 +71,7 @@ h1 {
   margin:10px;
 }
 
-.color-container>span {
+.color-container span {
   display: flex;
   flex-direction: row;
   justify-content: center;
