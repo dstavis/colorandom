@@ -63,8 +63,8 @@ var savePaletteButton = document.querySelector("#save-palette-button");
 var paletteContainer = document.querySelector(".palette-container");
 var savedPaletteContainer = document.querySelector(".saved-palette-container")
 
-window.addEventListener("load", handler);
-newPaletteButton.addEventListener("click", handler);
+window.addEventListener("load", loadPalette);
+newPaletteButton.addEventListener("click", loadPalette);
 savePaletteButton.addEventListener("click", savePalette);
 paletteContainer.addEventListener("click", lockUnlockColor);
 savedPaletteContainer.addEventListener("click", deleteSavedPalette);
@@ -72,7 +72,7 @@ savedPaletteContainer.addEventListener("click", deleteSavedPalette);
 var currentPalette = new Palette();
 var savedPalettes = []
 
-function handler(event) {
+function loadPalette(event) {
   if(event.type === "click") {
     currentPalette.replaceUnlockedColors();
   }
