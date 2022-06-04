@@ -7,9 +7,56 @@ body, body * {
 
 /* ***** end CSS RESET ********** */
 
+/* FONTS */
+
+
 body {
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
+  /* font-family: 'Varela Round', sans-serif; */
 }
+
+/* /fonts */
+
+/* COLORS */
+
+.parchment {
+  color: #E1B56F;
+}
+
+.mint {
+  color: #83E095;
+}
+
+.light-grey {
+  color: #E7E7E7;
+}
+
+.dark-grey {
+  color: #8C8C8C;
+}
+
+/* /colors */
+
+/* TEXT STYLES */
+
+.darkened{
+  /* Darken the font color by 20% */
+  filter: brightness(.9);
+
+  /* All-around stroke effect */
+  /* text-shadow:
+       2px 2px 0 #000,
+     -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+       2px 2px 0 #000; */
+}
+
+.lightened{
+  filter: brightness(1.5);
+}
+
+/* /text styles */
 
 main {
   display: flex;
@@ -22,10 +69,6 @@ main {
 
 h1 {
   font-size: 3.5em;
-}
-
-.picker-section h1 {
-  /* margin-top: 10vh; */
 }
 
 .picker-section {
