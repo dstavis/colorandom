@@ -20,6 +20,7 @@ class Color {
 
     return output.join("");
   }
+
 }
 
 class Palette {
@@ -66,6 +67,7 @@ window.addEventListener("load", handler);
 newPaletteButton.addEventListener("click", handler);
 savePaletteButton.addEventListener("click", savePalette);
 paletteContainer.addEventListener("click", lockUnlockColor);
+savedPaletteContainer.addEventListener("click", deleteSavedPalette);
 
 var currentPalette = new Palette();
 var savedPalettes = []
@@ -137,4 +139,13 @@ function displaySavedPalettes() {
         <i class="fa-solid fa-trash-can" data-id="${savedPalettes[i].id}"></i>
       </article>`;
   }
+}
+
+function deleteSavedPalette(event) {
+  for(var i = 0; i < savedPalettes.length; i++) {
+    if(savedPalettes[i].id === parseInt(event.target.getAttribute("data-id"))) {
+      savedPalettes.splice(i, 1);
+    }
+  }
+  displaySavedPalettes();
 }
