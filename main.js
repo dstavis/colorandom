@@ -102,7 +102,6 @@ function displayPalette() {
 function dragstartHandler(event) {
   event.dataTransfer.setData('text', event.target.getAttribute("data-id"));
   event.dataTransfer.effectAllowed = "move"
-  console.log(event.target.getAttribute('data-id'))
 }
 
 function dragoverHandler(event) {
@@ -112,9 +111,33 @@ function dragoverHandler(event) {
 
 function dropHandler(event) {
   event.preventDefault();
-  var data = event.dataTransfer.getData('text');
-  console.log(data)
-  event.target.appendChild(document.getElementById(data))
+  var dragId = parseInt(event.dataTransfer.getData('text'));
+  // find out which other color it's getting dropped on top of, and that color's ID
+  var dropId = parseInt(event.target.parentNode.dataset.id);
+  var dragColor;
+  var dropColor;
+  var dragIndex;
+  var dropIndex;
+  // change the order of the color with the dragId in the data model so that its position gets swapped with the color with the dropId
+    // first, find out what index the dragId color is at
+    for (var i = 0; i < currentPalette.colors.length; i++) {
+      if(currentPalette.colors[i].id === dragId){
+        // if the color has the dragid, set the dragcolor to it
+        dragColor = currentPalette.colors[i];
+        dragIndex = i;
+      }
+      if(currentPalette.colors[i].id === dropId){
+        // if the color has the dropid, set the dropcolor to it
+        dropColor = currentPalette.colors[i];
+        dropIndex = i;
+      }
+    }
+    // then, find out what index the dropId color is at
+    // then, reassign the color at the dropId index to the dragId color, and vice versa
+    currentPalette.colors[dropIndex] = dragColor;
+    currentPalette.colors[dragIndex] = dropColor;
+
+    displayPalette();
 }
 
 paletteContainer.addEventListener("dragstart", dragstartHandler)

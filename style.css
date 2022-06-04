@@ -69,6 +69,8 @@ h1 {
   justify-content: space-between;
   height: 240px;
   margin:10px;
+}:hover{
+  cursor: grab;
 }
 
 .color-container span {
