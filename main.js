@@ -142,10 +142,12 @@ function displaySavedPalettes() {
 }
 
 function deleteSavedPalette(event) {
-  for(var i = 0; i < savedPalettes.length; i++) {
-    if(savedPalettes[i].id === parseInt(event.target.getAttribute("data-id"))) {
-      savedPalettes.splice(i, 1);
+  if(event.target.classList.contains("fa-trash-can")) {
+    for(var i = 0; i < savedPalettes.length; i++) {
+      if(savedPalettes[i].id === parseInt(event.target.getAttribute("data-id"))) {
+        savedPalettes.splice(i, 1);
+      }
     }
+    displaySavedPalettes();
   }
-  displaySavedPalettes();
 }
