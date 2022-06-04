@@ -25,35 +25,50 @@ h1 {
 }
 
 .picker-section h1 {
-  margin-top: 10vh;
+  /* margin-top: 10vh; */
 }
 
 .picker-section {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   width: 75%;
   height: 100%;
+}
+
+.palette-container, .palette-container * {
+  /* allows items to shrink to prevent overflow */
+  min-width: 0px;
 }
 
 .palette-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 80%;
+  min-width: 80%;
+  max-width: 100%;
+
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .color-box {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
+  min-width: 0px;
+
+  border-radius: 2px;
+  border-style: solid;
+  border-color: black;
 }
 
 .color-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 300px;
+  height: 240px;
+  margin:10px;
 }
 
 .color-container span {
@@ -93,10 +108,14 @@ h1 {
   display: flex;
   justify-content: space-evenly;
   width: 80%;
-  margin-bottom: 15vh;
+  /* margin-bottom: 15vh; */
 }
 
 .picker-button {
   font-size: 2em;
   padding: 10px 20px;
+}
+
+button {
+  cursor: pointer;
 }
