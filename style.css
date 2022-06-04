@@ -14,7 +14,6 @@ body {
 main {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
@@ -46,16 +45,13 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  min-width: 80%;
-  max-width: 100%;
-
-  flex-wrap: wrap;
+  width: 65vw;
   overflow: hidden;
 }
 
 .color-box {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   min-width: 0px;
   margin-bottom: 1vh;
   border-radius: 2px;
@@ -67,18 +63,26 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 240px;
+  margin-right: 3vh;
+  width: 100%;
   margin:10px;
 }
 
 .color-container span {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .hexcode {
-  font-size: 2em;
+  margin-right: 1vw;
+}
+
+.fa-lock:before,
+.fa-lock-open:before,
+.hexcode {
+  font-size: 2vw;
 }
 
 .saved-section {
@@ -121,9 +125,7 @@ h1 {
   aspect-ratio: 1 / 1;
 }
 
-.fa-trash-can:before,
-.fa-lock:before,
-.fa-lock-open:before {
+.fa-trash-can:before {
   margin-left: 1vh;
   font-size: 2em;
 }
@@ -132,7 +134,7 @@ h1 {
   display: flex;
   justify-content: space-evenly;
   width: 80%;
-  /* margin-bottom: 15vh; */
+  margin-bottom: 15vh;
 }
 
 .picker-button {
