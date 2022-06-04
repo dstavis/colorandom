@@ -96,19 +96,23 @@ h1 {
   width: 100%;
   aspect-ratio: 1 / 1;
   min-width: 0px;
-  margin-bottom: 1vh;
-  border-radius: 2px;
-  border-style: solid;
-  border-color: black;
+  margin-bottom: 1vw;
+  border-radius: 5px;
 }
 
 .color-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 3vh;
+  /* now margin-right: 3vh; <-- no effect right */
   width: 100%;
-  margin:10px;
+  margin: 0.5vw;
+
+  box-sizing: border-box;
+  padding: 1vw;
+  border: 1px solid #E7E7E7;
+  border-radius: 5px;
+  box-shadow: 0.3vw 0.3vw 0.3vw 0.02vw #E7E7E7;;
 }
 
 .color-container span {
@@ -125,7 +129,7 @@ h1 {
 .fa-lock:before,
 .fa-lock-open:before,
 .hexcode {
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 
 .saved-section {
