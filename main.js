@@ -89,7 +89,7 @@ function displayPalette() {
       iconType = "fa-lock";
     }
     paletteContainer.innerHTML +=
-    `<article class="color-container" data-id="${currentPalette.colors[i].id}">
+    `<article class="color-container" draggable="true" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)" data-id="${currentPalette.colors[i].id}">
       <div class="color-box" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
         <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
@@ -98,6 +98,26 @@ function displayPalette() {
     </article>`;
   }
 }
+
+function dragstartHandler(event) {
+  event.dataTransfer.setData('text', event.target.getAttribute("data-id"));
+  event.dataTransfer.effectAllowed = "move"
+  console.log(event.target.getAttribute('data-id'))
+}
+
+function dragoverHandler(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = "move"
+}
+
+function dropHandler(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData('text');
+  console.log(data)
+  event.target.appendChild(document.getElementById(data))
+}
+
+paletteContainer.addEventListener("dragstart", dragstartHandler)
 
 function lockUnlockColor(event) {
   if(event.target.classList.contains("fa-lock-open")) {
