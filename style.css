@@ -130,6 +130,24 @@ h1 {
   font-size: 2em;
 }
 
+.fa-lock,
+.fa-lock-open {
+  /* position: fixed; */
+}
+
+.fa-lock,
+.fa-lock-open,
+.fa-trash-can {
+  text-shadow: 1.5px 1.5px 1.5px #8C8C8C;
+}
+
+.fa-lock:hover,
+.fa-lock-open:hover,
+.fa-trash-can:hover {
+  font-size: 3em;
+  text-shadow: 2px 2px 2px #8C8C8C;
+}
+
 .button-container {
   display: flex;
   justify-content: space-evenly;
