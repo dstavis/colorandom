@@ -165,11 +165,13 @@ function displaySavedPalettes() {
   for(var i = 0; i < savedPalettes.length; i++) {
   savedPaletteContainer.innerHTML +=
     `<article class="saved-palette" data-id="${savedPalettes[i].id}">
-        <div class="saved-color-box" style="background:${savedPalettes[i].colors[0].hexcode};"></div>
-        <div class="saved-color-box" style="background:${savedPalettes[i].colors[1].hexcode};"></div>
-        <div class="saved-color-box" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
-        <div class="saved-color-box" style="background:${savedPalettes[i].colors[3].hexcode};"></div>
-        <div class="saved-color-box" style="background:${savedPalettes[i].colors[4].hexcode};"></div>
+        <div class="saved-color-box-mask">
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[0].hexcode};"></div>
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[1].hexcode};"></div>
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[3].hexcode};"></div>
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[4].hexcode};"></div>
+        </div>
         <i role="button" class="fa-solid fa-trash-can" data-id="${savedPalettes[i].id}"></i>
       </article>`;
   }
