@@ -113,6 +113,7 @@ function dropHandler(event) {
   event.preventDefault();
   var dragId = parseInt(event.dataTransfer.getData('text'));
   var dropId = parseInt(event.target.parentNode.dataset.id);
+  
   var dragColor;
   var dropColor;
   var dragIndex;
