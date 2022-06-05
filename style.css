@@ -275,7 +275,7 @@ h1 {
   border-radius: 5px;
 
   background-color: white;
-  border: 1px solid #8C8C8C;
+  border: 1px solid #E7E7E7;
   color: #E7E7E7;
 
   transition-property: all;
@@ -285,11 +285,12 @@ h1 {
 
 .picker-button:hover{
   border: 1px solid #E7E7E7;
-  color: #76ca86;
+  color: #3F3844;
   box-shadow: 0.1vw 0.1vw 0.4vw 0vw #8c8c8c;
 }
 
 .picker-button:active{
-  border: 1px solid #8C8C8C;
+  border: 1px solid #E7E7E7;
   color: #E7E7E7;
+  box-shadow: 0vw 0vw 0vw 0vw white;
 }
