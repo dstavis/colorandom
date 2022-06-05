@@ -68,6 +68,7 @@ newPaletteButton.addEventListener("click", loadPalette);
 savePaletteButton.addEventListener("click", savePalette);
 paletteContainer.addEventListener("click", lockUnlockColor);
 savedPaletteContainer.addEventListener("click", deleteSavedPalette);
+paletteContainer.addEventListener("dragstart", dragstartHandler)
 
 var currentPalette = new Palette();
 var savedPalettes = []
@@ -89,8 +90,8 @@ function displayPalette() {
       iconType = "fa-lock";
     }
     paletteContainer.innerHTML +=
-    `<article class="color-container" draggable="true" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)" data-id="${currentPalette.colors[i].id}">
-      <div class="color-box" style="background:${currentPalette.colors[i].hexcode};"></div>
+    `<article class="color-container" draggable="true" ondragover="dragoverHandler(event)" data-id="${currentPalette.colors[i].id}">
+      <div class="color-box" ondrop="dropHandler(event)" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
         <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
         <i class="fa-solid ${iconType}" data-id="${currentPalette.colors[i].id}"></i>
@@ -100,18 +101,18 @@ function displayPalette() {
 }
 
 function dragstartHandler(event) {
-  event.dataTransfer.setData('text', event.target.getAttribute("data-id"));
-  event.dataTransfer.effectAllowed = "move"
+  event.dataTransfer.setData('color-box', event.target.getAttribute("data-id"));
+  event.dataTransfer.effectAllowed = "move";
 }
 
 function dragoverHandler(event) {
   event.preventDefault();
-  event.dataTransfer.dropEffect = "move"
+  event.dataTransfer.dropEffect = "move";
 }
 
 function dropHandler(event) {
   event.preventDefault();
-  var dragId = parseInt(event.dataTransfer.getData('text'));
+  var dragId = parseInt(event.dataTransfer.getData('color-box'));
   var dropId = parseInt(event.target.parentNode.dataset.id);
   var dragColor;
   var dropColor;
@@ -132,8 +133,6 @@ function dropHandler(event) {
 
     displayPalette();
 }
-
-paletteContainer.addEventListener("dragstart", dragstartHandler)
 
 function lockUnlockColor(event) {
   if(event.target.classList.contains("fa-lock-open")) {
