@@ -101,6 +101,14 @@ h1 {
   border-radius: 5px;
 }
 
+.color-box:hover {
+  cursor: grab;
+}
+
+.color-box:active {
+  cursor: grabbing;
+}
+
 .color-container {
   display: flex;
   flex-direction: column;

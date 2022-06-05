@@ -89,14 +89,48 @@ function displayPalette() {
       iconType = "fa-lock";
     }
     paletteContainer.innerHTML +=
-    `<article class="color-container" data-id="${currentPalette.colors[i].id}">
-      <div class="color-box" style="background:${currentPalette.colors[i].hexcode};"></div>
+    `<article class="color-container" draggable="true" ondragstart="dragstartHandler(event)" ondragover="dragoverHandler(event)" data-id="${currentPalette.colors[i].id}">
+      <div class="color-box" ondrop="dropHandler(event)" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
         <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
         <i role="button" class="fa-solid ${iconType}" data-id="${currentPalette.colors[i].id}"></i>
       </span>
     </article>`;
   }
+}
+
+function dragstartHandler(event) {
+  event.dataTransfer.setData('color-box', event.target.getAttribute("data-id"));
+  event.dataTransfer.effectAllowed = "move";
+}
+
+function dragoverHandler(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = "move";
+}
+
+function dropHandler(event) {
+  event.preventDefault();
+  var dragId = parseInt(event.dataTransfer.getData('color-box'));
+  var dropId = parseInt(event.target.parentNode.dataset.id);
+  var dragColor;
+  var dropColor;
+  var dragIndex;
+  var dropIndex;
+    for (var i = 0; i < currentPalette.colors.length; i++) {
+      if(currentPalette.colors[i].id === dragId){
+        dragColor = currentPalette.colors[i];
+        dragIndex = i;
+      }
+      if(currentPalette.colors[i].id === dropId){
+        dropColor = currentPalette.colors[i];
+        dropIndex = i;
+      }
+    }
+    currentPalette.colors[dropIndex] = dragColor;
+    currentPalette.colors[dragIndex] = dropColor;
+
+    displayPalette();
 }
 
 function lockUnlockColor(event) {
