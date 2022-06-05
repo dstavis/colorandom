@@ -5,6 +5,17 @@ body, body * {
   padding: 0;
 }
 
+button {
+  border: 0px;
+  border-radius: 0px;
+  font-weight: normal;
+  font-size: 1em;
+  font-family: inherit;
+  color:inherit;
+
+  cursor: pointer;
+}
+
 /* ***** end CSS RESET ********** */
 
 /* FONTS */
@@ -13,6 +24,9 @@ body, body * {
 body {
   font-family: 'Inter', sans-serif;
   /* font-family: 'Varela Round', sans-serif; */
+
+  /* Replace the default black font color with a softer off-black */
+  color: #3F3844;
 }
 
 /* /fonts */
@@ -33,6 +47,10 @@ body {
 
 .dark-grey {
   color: #8C8C8C;
+}
+
+.off-black {
+  color: #3F3844;
 }
 
 /* /colors */
@@ -58,6 +76,14 @@ body {
 
 /* /text styles */
 
+hr {
+  border: 0px;
+  border-top: 1px solid rgba(57,76,96,.15);
+  width: 80%;
+  align-self: center;
+  margin-left: 10%;
+}
+
 main {
   display: flex;
   flex-direction: row;
@@ -73,6 +99,7 @@ h1 {
 .picker-section {
   display: flex;
   flex-direction: column;
+
   justify-content: space-evenly;
   align-items: center;
   width: 75%;
@@ -113,7 +140,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* now margin-right: 3vh; <-- no effect right */
+
   width: 100%;
   margin: 0.5vw;
 
@@ -121,7 +148,7 @@ h1 {
   padding: 1vw;
   border: 1px solid #E7E7E7;
   border-radius: 5px;
-  box-shadow: 0.3vw 0.3vw 0.3vw 0.02vw #E7E7E7;
+  box-shadow: 0.2vw 0.2vw 0.3vw 0vw #8c8c8c;
 }
 
 .color-container span {
@@ -147,13 +174,14 @@ h1 {
   align-items: center;
   width: 25%;
   height: 100%;
-  border-left: 5px solid black;
   position: relative;
   overflow: scroll;
+
+  box-shadow: -10px 0px 8px 0px rgba(231,231,231,0.5);
 }
 
 .saved-section h2 {
-  margin-top: 10vh;
+  margin-top: 5vh;
   margin-bottom: 3vh;
 }
 
@@ -167,21 +195,41 @@ h1 {
 .saved-palette {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
+
   width: 93%;
-  margin-top: 3vw;
+  margin-top: 2vw;
+
+  background-color: white;
+
+  box-sizing: border-box;
+  padding-top: 0.7vw;
+  padding-bottom: 0.7vw;
+  border: 1px solid #E7E7E7;
+  border-radius: 5px;
+  box-shadow: 0.2vw 0.2vw 0.3vw 0vw #8c8c8c;
+}
+
+.saved-color-box-mask{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.2vw;
+
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: 2px solid white;
 }
 
 .saved-color-box {
-  margin-right: .6vw;
-  border-radius: 2.5px;
-  width: 3.6vw;
+  width: 4vw;
   aspect-ratio: 1 / 1;
 }
 
 .fa-trash-can {
-  margin-left: .5vw;
-  font-size: 1.5vw;
+  margin-left: 0.2vw;
+  font-size: 1.2vw;
 }
 
 .fa-lock,
@@ -191,16 +239,25 @@ h1 {
   transition: all 0.15s ease-out;
 }
 
-.fa-lock:hover,
-.fa-lock-open:hover,
 .fa-trash-can:hover {
+  margin-left: 0.03vw;
+  font-size: 1.4vw;
+  text-shadow: 2.5px 3px 2.5px #D7D7D7;
+}
+
+.fa-lock:hover,
+.fa-lock-open:hover{
   font-size: 1.8vw;
   text-shadow: 2.5px 3px 2.5px #D7D7D7;
 }
 
-.fa-lock:active,
-.fa-lock-open:active,
 .fa-trash-can:active {
+  font-size: 1.2vw;
+  text-shadow: 1.4px 2px 1.5px #8C8C8C;
+}
+
+.fa-lock:active,
+.fa-lock-open:active{
   font-size: 1.5vw;
   text-shadow: 1.5px 2px 1.5px #8C8C8C;
 }
@@ -209,14 +266,18 @@ h1 {
   display: flex;
   justify-content: space-evenly;
   width: 80%;
-  margin-bottom: 15vh;
+  margin-bottom: 5vh;
 }
 
 .picker-button {
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 10px 20px;
+  border-radius: 5px;
+  transition-property: filter;
+  transition-duration: 0.5s;
+  transition-delay: 0s;
 }
 
-button {
-  cursor: pointer;
+.picker-button:hover{
+  filter: brightness(0.8);
 }
