@@ -63,14 +63,20 @@ h1 {
   border-color: black;
 }
 
+.color-box:hover {
+  cursor: grab;
+}
+
+.color-box:active {
+  cursor: grabbing;
+}
+
 .color-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 240px;
   margin:10px;
-}:hover{
-  cursor: grab;
 }
 
 .color-container span {
