@@ -93,7 +93,7 @@ function displayPalette() {
       <div class="color-box" ondrop="dropHandler(event)" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
         <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
-        <i class="fa-solid ${iconType}" data-id="${currentPalette.colors[i].id}"></i>
+        <i role="button" class="fa-solid ${iconType}" data-id="${currentPalette.colors[i].id}"></i>
       </span>
     </article>`;
   }
@@ -170,7 +170,7 @@ function displaySavedPalettes() {
         <div class="saved-color-box" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
         <div class="saved-color-box" style="background:${savedPalettes[i].colors[3].hexcode};"></div>
         <div class="saved-color-box" style="background:${savedPalettes[i].colors[4].hexcode};"></div>
-        <i class="fa-solid fa-trash-can" data-id="${savedPalettes[i].id}"></i>
+        <i role="button" class="fa-solid fa-trash-can" data-id="${savedPalettes[i].id}"></i>
       </article>`;
   }
 }
