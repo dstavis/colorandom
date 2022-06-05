@@ -188,7 +188,7 @@ h1 {
 .fa-lock-open,
 .fa-trash-can {
   text-shadow: 1.5px 2px 1.5px #8C8C8C;
-  transition: all 0.3s ease-out;
+  transition: all 0.15s ease-out;
 }
 
 .fa-lock:hover,
