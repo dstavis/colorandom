@@ -270,14 +270,26 @@ h1 {
 }
 
 .picker-button {
-  font-size: 1.5em;
+  font-size: 2em;
   padding: 10px 20px;
   border-radius: 5px;
-  transition-property: filter;
-  transition-duration: 0.5s;
+
+  background-color: white;
+  border: 1px solid #8C8C8C;
+  color: #E7E7E7;
+
+  transition-property: all;
+  transition-duration: 0.15s;
   transition-delay: 0s;
 }
 
 .picker-button:hover{
-  filter: brightness(0.8);
+  border: 1px solid #E7E7E7;
+  color: #76ca86;
+  box-shadow: 0.1vw 0.1vw 0.4vw 0vw #8c8c8c;
+}
+
+.picker-button:active{
+  border: 1px solid #8C8C8C;
+  color: #E7E7E7;
 }
