@@ -68,7 +68,6 @@ newPaletteButton.addEventListener("click", loadPalette);
 savePaletteButton.addEventListener("click", savePalette);
 paletteContainer.addEventListener("click", lockUnlockColor);
 savedPaletteContainer.addEventListener("click", deleteSavedPalette);
-paletteContainer.addEventListener("dragstart", dragstartHandler)
 
 var currentPalette = new Palette();
 var savedPalettes = []
@@ -90,7 +89,7 @@ function displayPalette() {
       iconType = "fa-lock";
     }
     paletteContainer.innerHTML +=
-    `<article class="color-container" draggable="true" ondragover="dragoverHandler(event)" data-id="${currentPalette.colors[i].id}">
+    `<article class="color-container" draggable="true" ondragstart="dragstartHandler(event)" ondragover="dragoverHandler(event)" data-id="${currentPalette.colors[i].id}">
       <div class="color-box" ondrop="dropHandler(event)" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
         <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
