@@ -112,6 +112,7 @@ function dragoverHandler(event) {
 function dropHandler(event) {
   event.preventDefault();
   var dragId = parseInt(event.dataTransfer.getData("color-box"));
+  var dropId = parseInt(event.target.dataset.id);
   var dropId = parseInt(event.target.parentNode.dataset.id);
   var dragColor;
   var dropColor;
@@ -192,8 +193,8 @@ function displaySavedPalettes() {
   savedPaletteContainer.innerHTML = "";
   for(var i = 0; i < savedPalettes.length; i++) {
   savedPaletteContainer.innerHTML +=
-    `<article draggable="true" ondragstart="savedDragstartHandler(event)" ondragover="dragoverHandler(event)" ondrop="savedDropHandler(event)" class="saved-palette" data-id="${savedPalettes[i].id}">
-        <div class="saved-color-box-mask" data-id="${savedPalettes[i].id}">
+    `<article draggable="true" ondragstart="savedDragstartHandler(event)" ondragover="dragoverHandler(event)" class="saved-palette" data-id="${savedPalettes[i].id}">
+        <div class="saved-color-box-mask" ondrop="savedDropHandler(event)" data-id="${savedPalettes[i].id}">
           <div class="saved-color-box" style="background:${savedPalettes[i].colors[0].hexcode};"></div>
           <div class="saved-color-box" style="background:${savedPalettes[i].colors[1].hexcode};"></div>
           <div class="saved-color-box" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
