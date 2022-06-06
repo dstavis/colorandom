@@ -23,13 +23,10 @@ button {
 
 body {
   font-family: 'Inter', sans-serif;
-  /* font-family: 'Varela Round', sans-serif; */
-
-  /* Replace the default black font color with a softer off-black */
   color: #3F3844;
 }
 
-/* /fonts */
+/* end FONTS */
 
 /* COLORS */
 
@@ -53,28 +50,19 @@ body {
   color: #3F3844;
 }
 
-/* /colors */
+/* end COLORS */
 
 /* TEXT STYLES */
 
 .darkened{
-  /* Darken the font color by 20% */
   filter: brightness(.9);
-
-  /* All-around stroke effect */
-  /* text-shadow:
-       2px 2px 0 #000,
-     -2px -2px 0 #000,
-      2px -2px 0 #000,
-      -2px 2px 0 #000,
-       2px 2px 0 #000; */
 }
 
 .lightened{
   filter: brightness(1.5);
 }
 
-/* /text styles */
+/* end TEXT STYLES */
 
 hr {
   border: 0px;
@@ -108,7 +96,6 @@ h1 {
 
 .palette-container,
 .palette-container * {
-  /* allows items to shrink to prevent overflow */
   min-width: 0px;
 }
 
@@ -131,11 +118,6 @@ h1 {
 .color-box:hover,
 .saved-palette:hover {
   cursor: grab;
-}
-
-.color-box:active,
-.saved-palette:active {
-  cursor: grabbing;
 }
 
 .color-container {
