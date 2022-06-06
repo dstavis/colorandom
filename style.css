@@ -298,7 +298,34 @@ h1 {
 }
 
 p:hover {
-  cursor: copy;
+  cursor: pointer;
   color: #E1B56F;
   text-decoration: underline;
+}
+
+p:active {
+  color: #83E095;
+}
+
+p {
+  position: relative;
+}
+
+p:before {
+  content: "Click to Copy";
+  position: absolute;
+  bottom: 100%;
+  width: auto;
+  aspect-ratio: 5 / 1;
+  padding: 6px 8px 6px 8px;
+  border-radius:7.5px;
+  background:#E7E7E7;
+  color: #000000;
+  font-size: .4em;
+  text-align: center;
+  display: none;
+}
+
+p:hover:before {
+  display: block;
 }
