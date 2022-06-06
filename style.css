@@ -133,11 +133,6 @@ h1 {
   cursor: grab;
 }
 
-.color-box:active,
-.saved-palette:active {
-  cursor: grabbing;
-}
-
 .color-container {
   display: flex;
   flex-direction: column;

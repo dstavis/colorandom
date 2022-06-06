@@ -108,10 +108,13 @@ function dragstartHandler(event) {
 function dragoverHandler(event) {
   event.preventDefault();
   event.dataTransfer.dropEffect = "move";
+  event.target.style.cursor = "grabbing"
 }
 
 function dropHandler(event) {
   event.preventDefault();
+  console.log(event.target);
+  event.target.style.cursor = "grab"
   if(!event.dataTransfer.getData("color-box")) {
     return
   }
@@ -144,6 +147,7 @@ function savedDragstartHandler(event) {
 
 function savedDropHandler(event) {
   event.preventDefault();
+  event.target.style.cursor = "grab"
   if(!event.dataTransfer.getData("saved-color-box")) {
     return
   }
