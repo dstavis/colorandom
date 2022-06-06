@@ -112,7 +112,6 @@ function dragoverHandler(event) {
 function dropHandler(event) {
   event.preventDefault();
   var dragId = parseInt(event.dataTransfer.getData("color-box"));
-  var dropId = parseInt(event.target.dataset.id);
   var dropId = parseInt(event.target.parentNode.dataset.id);
   var dragColor;
   var dropColor;
