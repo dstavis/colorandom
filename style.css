@@ -128,11 +128,13 @@ h1 {
   border-radius: 5px;
 }
 
-.color-box:hover {
+.color-box:hover,
+.saved-palette:hover {
   cursor: grab;
 }
 
-.color-box:active {
+.color-box:active,
+.saved-palette:active {
   cursor: grabbing;
 }
 

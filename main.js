@@ -141,7 +141,7 @@ function savedDragstartHandler(event) {
 function savedDropHandler(event) {
   event.preventDefault();
   var savedDragId = parseInt(event.dataTransfer.getData("saved-color-box"));
-  var savedDropId = parseInt(event.target.dataset.id);
+  var savedDropId = parseInt(event.target.parentElement.dataset.id);
   var savedDragPalette;
   var savedDropPalette;
   var savedDragIndex;
@@ -194,11 +194,11 @@ function displaySavedPalettes() {
   savedPaletteContainer.innerHTML +=
     `<article draggable="true" ondragstart="savedDragstartHandler(event)" ondragover="dragoverHandler(event)" ondrop="savedDropHandler(event)" class="saved-palette" data-id="${savedPalettes[i].id}">
         <div class="saved-color-box-mask" data-id="${savedPalettes[i].id}">
-          <div class="saved-color-box" data-id="${savedPalettes[i].id}" style="background:${savedPalettes[i].colors[0].hexcode};"></div>
-          <div class="saved-color-box" data-id="${savedPalettes[i].id}" style="background:${savedPalettes[i].colors[1].hexcode};"></div>
-          <div class="saved-color-box" data-id="${savedPalettes[i].id}" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
-          <div class="saved-color-box" data-id="${savedPalettes[i].id}" style="background:${savedPalettes[i].colors[3].hexcode};"></div>
-          <div class="saved-color-box" data-id="${savedPalettes[i].id}" style="background:${savedPalettes[i].colors[4].hexcode};"></div>
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[0].hexcode};"></div>
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[1].hexcode};"></div>
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[3].hexcode};"></div>
+          <div class="saved-color-box" style="background:${savedPalettes[i].colors[4].hexcode};"></div>
         </div>
         <i role="button" class="fa-solid fa-trash-can" data-id="${savedPalettes[i].id}"></i>
       </article>`;
