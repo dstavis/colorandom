@@ -280,7 +280,7 @@ h1 {
 
   background-color: white;
   border: 1px solid #E7E7E7;
-  color: #E7E7E7;
+  color: #7d7581;
 
   transition-property: all;
   transition-duration: 0.15s;
@@ -288,7 +288,7 @@ h1 {
 }
 
 .picker-button:hover{
-  border: 1px solid #E7E7E7;
+  border: 1px solid #E7E7E7;;
   color: #3F3844;
   box-shadow: 0.1vw 0.1vw 0.4vw 0vw #8c8c8c;
 }
