@@ -68,6 +68,7 @@ newPaletteButton.addEventListener("click", loadPalette);
 savePaletteButton.addEventListener("click", savePalette);
 paletteContainer.addEventListener("click", lockUnlockColor);
 savedPaletteContainer.addEventListener("click", deleteSavedPalette);
+paletteContainer.addEventListener("click", copyHexCode);
 
 var currentPalette = new Palette();
 var savedPalettes = []
@@ -82,7 +83,7 @@ function loadPalette(event) {
 function displayPalette() {
   paletteContainer.innerHTML = "";
   var iconType;
-  for (i = 0; i < currentPalette.colors.length; i++) {
+  for(i = 0; i < currentPalette.colors.length; i++) {
     if(currentPalette.colors[i].locked === false) {
       iconType = "fa-lock-open";
     } else {
@@ -92,7 +93,7 @@ function displayPalette() {
     `<article class="color-container" draggable="true" ondragstart="dragstartHandler(event)" ondragover="dragoverHandler(event)" data-id="${currentPalette.colors[i].id}">
       <div class="color-box" ondrop="dropHandler(event)" style="background:${currentPalette.colors[i].hexcode};"></div>
       <span>
-        <p class="hexcode">${currentPalette.colors[i].hexcode}</p>
+        <p class="hexcode" data-id="${currentPalette.colors[i].id}">${currentPalette.colors[i].hexcode}</p>
         <i role="button" class="fa-solid ${iconType}" data-id="${currentPalette.colors[i].id}"></i>
       </span>
     </article>`;
@@ -171,7 +172,7 @@ function lockUnlockColor(event) {
   if(event.target.classList.contains("fa-lock-open")) {
     currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
     lockIcon(event);
-  } else if (event.target.classList.contains("fa-lock")) {
+  } else if(event.target.classList.contains("fa-lock")) {
     currentPalette.toggleColorLocked(parseInt(event.target.getAttribute("data-id")));
     unlockIcon(event);
   }
@@ -219,5 +220,11 @@ function deleteSavedPalette(event) {
       }
     }
     displaySavedPalettes();
+  }
+}
+
+function copyHexCode(event) {
+  if(event.target.classList.contains("hexcode")) {
+    navigator.clipboard.writeText(event.target.innerText);
   }
 }
