@@ -299,8 +299,36 @@ h1 {
   box-shadow: 0vw 0vw 0vw 0vw white;
 }
 
-p:hover {
-  cursor: copy;
+.hexcode:hover {
+  cursor: pointer;
   color: #E1B56F;
   text-decoration: underline;
+}
+
+.hexcode:active {
+  color: #83E095;
+}
+
+.hexcode {
+  position: relative;
+}
+
+.hexcode:before {
+  content: "Click to Copy";
+  position: absolute;
+  bottom: 100%;
+  width: auto;
+  aspect-ratio: 5 / 1;
+  padding: 6px 8px 6px 8px;
+  border-radius:7.5px;
+  background:#E7E7E7;
+  color: #3F3844;
+  opacity: .8;
+  font-size: .4em;
+  text-align: center;
+  display: none;
+}
+
+.hexcode:hover:before {
+  display: block;
 }
