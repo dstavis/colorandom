@@ -320,7 +320,8 @@ h1 {
   padding: 6px 8px 6px 8px;
   border-radius:7.5px;
   background:#E7E7E7;
-  color: #000000;
+  color: #3F3844;
+  opacity: .8;
   font-size: .4em;
   text-align: center;
   display: none;
