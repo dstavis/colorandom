@@ -297,21 +297,21 @@ h1 {
   box-shadow: 0vw 0vw 0vw 0vw white;
 }
 
-p:hover {
+.hexcode:hover {
   cursor: pointer;
   color: #E1B56F;
   text-decoration: underline;
 }
 
-p:active {
+.hexcode:active {
   color: #83E095;
 }
 
-p {
+.hexcode {
   position: relative;
 }
 
-p:before {
+.hexcode:before {
   content: "Click to Copy";
   position: absolute;
   bottom: 100%;
@@ -326,6 +326,6 @@ p:before {
   display: none;
 }
 
-p:hover:before {
+.hexcode:hover:before {
   display: block;
 }
