@@ -111,6 +111,9 @@ function dragoverHandler(event) {
 
 function dropHandler(event) {
   event.preventDefault();
+  if(!event.dataTransfer.getData("color-box")) {
+    return
+  }
   var dragId = parseInt(event.dataTransfer.getData("color-box"));
   var dropId = parseInt(event.target.parentNode.dataset.id);
   var dragColor;
@@ -140,6 +143,9 @@ function savedDragstartHandler(event) {
 
 function savedDropHandler(event) {
   event.preventDefault();
+  if(!event.dataTransfer.getData("saved-color-box")) {
+    return
+  }
   var savedDragId = parseInt(event.dataTransfer.getData("saved-color-box"));
   var savedDropId = parseInt(event.target.parentElement.dataset.id);
   var savedDragPalette;
