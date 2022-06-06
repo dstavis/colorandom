@@ -101,7 +101,7 @@ function displayPalette() {
 }
 
 function dragstartHandler(event) {
-  event.dataTransfer.setData('color-box', event.target.getAttribute("data-id"));
+  event.dataTransfer.setData("color-box", event.target.getAttribute("data-id"));
   event.dataTransfer.effectAllowed = "move";
 }
 
@@ -112,26 +112,60 @@ function dragoverHandler(event) {
 
 function dropHandler(event) {
   event.preventDefault();
-  var dragId = parseInt(event.dataTransfer.getData('color-box'));
+  if(!event.dataTransfer.getData("color-box")) {
+    return
+  }
+  var dragId = parseInt(event.dataTransfer.getData("color-box"));
   var dropId = parseInt(event.target.parentNode.dataset.id);
   var dragColor;
   var dropColor;
   var dragIndex;
   var dropIndex;
-    for(var i = 0; i < currentPalette.colors.length; i++) {
-      if(currentPalette.colors[i].id === dragId) {
-        dragColor = currentPalette.colors[i];
-        dragIndex = i;
-      }
-      if(currentPalette.colors[i].id === dropId) {
-        dropColor = currentPalette.colors[i];
-        dropIndex = i;
-      }
+  for(var i = 0; i < currentPalette.colors.length; i++) {
+    if(currentPalette.colors[i].id === dragId){
+      dragColor = currentPalette.colors[i];
+      dragIndex = i;
     }
-    currentPalette.colors[dropIndex] = dragColor;
-    currentPalette.colors[dragIndex] = dropColor;
+    if(currentPalette.colors[i].id === dropId){
+      dropColor = currentPalette.colors[i];
+      dropIndex = i;
+    }
+  }
+  currentPalette.colors[dropIndex] = dragColor;
+  currentPalette.colors[dragIndex] = dropColor;
 
-    displayPalette();
+  displayPalette();
+}
+
+function savedDragstartHandler(event) {
+  event.dataTransfer.setData("saved-color-box", event.target.getAttribute("data-id"))
+  event.dataTransfer.effectAllowed = "move";
+}
+
+function savedDropHandler(event) {
+  event.preventDefault();
+  if(!event.dataTransfer.getData("saved-color-box")) {
+    return
+  }
+  var savedDragId = parseInt(event.dataTransfer.getData("saved-color-box"));
+  var savedDropId = parseInt(event.target.parentElement.dataset.id);
+  var savedDragPalette;
+  var savedDropPalette;
+  var savedDragIndex;
+  var savedDropIndex;
+  for(var i = 0; i < savedPalettes.length; i++) {
+    if(savedPalettes[i].id === savedDragId) {
+      savedDragPalette = savedPalettes[i];
+      savedDragIndex = i;
+    }
+    if(savedPalettes[i].id === savedDropId) {
+      savedDropPalette = savedPalettes[i]
+      savedDropIndex = i;
+    }
+  }
+  savedPalettes[savedDropIndex] = savedDragPalette;
+  savedPalettes[savedDragIndex] = savedDropPalette;
+  displaySavedPalettes();
 }
 
 function lockUnlockColor(event) {
@@ -165,8 +199,8 @@ function displaySavedPalettes() {
   savedPaletteContainer.innerHTML = "";
   for(var i = 0; i < savedPalettes.length; i++) {
   savedPaletteContainer.innerHTML +=
-    `<article class="saved-palette" data-id="${savedPalettes[i].id}">
-        <div class="saved-color-box-mask">
+    `<article draggable="true" ondragstart="savedDragstartHandler(event)" ondragover="dragoverHandler(event)" class="saved-palette" data-id="${savedPalettes[i].id}">
+        <div class="saved-color-box-mask" ondrop="savedDropHandler(event)" data-id="${savedPalettes[i].id}">
           <div class="saved-color-box" style="background:${savedPalettes[i].colors[0].hexcode};"></div>
           <div class="saved-color-box" style="background:${savedPalettes[i].colors[1].hexcode};"></div>
           <div class="saved-color-box" style="background:${savedPalettes[i].colors[2].hexcode};"></div>
