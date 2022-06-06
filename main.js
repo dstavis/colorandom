@@ -61,7 +61,7 @@ class Palette {
 var newPaletteButton = document.querySelector("#new-palette-button");
 var savePaletteButton = document.querySelector("#save-palette-button");
 var paletteContainer = document.querySelector(".palette-container");
-var savedPaletteContainer = document.querySelector(".saved-palette-container")
+var savedPaletteContainer = document.querySelector(".saved-palette-container");
 
 window.addEventListener("load", loadPalette);
 newPaletteButton.addEventListener("click", loadPalette);
@@ -108,13 +108,11 @@ function dragstartHandler(event) {
 function dragoverHandler(event) {
   event.preventDefault();
   event.dataTransfer.dropEffect = "move";
-  event.target.style.cursor = "grabbing"
+  event.target.style.cursor = "grabbing";
 }
 
 function dropHandler(event) {
   event.preventDefault();
-  console.log(event.target);
-  event.target.style.cursor = "grab"
   if(!event.dataTransfer.getData("color-box")) {
     return
   }
@@ -141,13 +139,12 @@ function dropHandler(event) {
 }
 
 function savedDragstartHandler(event) {
-  event.dataTransfer.setData("saved-color-box", event.target.getAttribute("data-id"))
+  event.dataTransfer.setData("saved-color-box", event.target.getAttribute("data-id"));
   event.dataTransfer.effectAllowed = "move";
 }
 
 function savedDropHandler(event) {
   event.preventDefault();
-  event.target.style.cursor = "grab"
   if(!event.dataTransfer.getData("saved-color-box")) {
     return
   }
@@ -163,7 +160,7 @@ function savedDropHandler(event) {
       savedDragIndex = i;
     }
     if(savedPalettes[i].id === savedDropId) {
-      savedDropPalette = savedPalettes[i]
+      savedDropPalette = savedPalettes[i];
       savedDropIndex = i;
     }
   }
