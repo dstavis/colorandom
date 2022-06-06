@@ -296,3 +296,9 @@ h1 {
   color: #E7E7E7;
   box-shadow: 0vw 0vw 0vw 0vw white;
 }
+
+p:hover {
+  cursor: copy;
+  color: #E1B56F;
+  text-decoration: underline;
+}
