@@ -243,12 +243,14 @@ h1 {
   margin-left: 0.03vw;
   font-size: 1.4vw;
   text-shadow: 2.5px 3px 2.5px #D7D7D7;
+  cursor: pointer !important;
 }
 
 .fa-lock:hover,
 .fa-lock-open:hover{
   font-size: 1.8vw;
   text-shadow: 2.5px 3px 2.5px #D7D7D7;
+  cursor: pointer;
 }
 
 .fa-trash-can:active {
